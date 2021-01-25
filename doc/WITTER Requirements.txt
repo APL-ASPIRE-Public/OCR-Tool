@@ -1,0 +1,85 @@
+﻿Written Text Reader (WITTER) Project Requirements
+
+
+Core Ideas -J
+
+
+* The model will predict handwritten digits accurately
+* The model will be resource efficient
+* The model will be user friendly
+* The model will be simple but sophisticated 
+
+
+Purpose/Intended Audience -S
+
+
+* The purpose of the Software Requirements Specification document is to define and formalize the software requirements of the Written Text Reader. The purpose of the Written Text Reader is to predict handwritten characters accurately to aid others with disabilities, hand injuries, or any obstacles preventing an individual from writing legibly. The intended audience for this product are any clients that struggle to write legibly and wish to be able to do that without affliction.
+
+
+* The project is for those with disabilities or possible hand injuries
+
+
+* The project is for those who have bad hand-writing
+
+
+Scope of Product -N
+
+
+* WITTER shall facilitate the job of assisting those who cannot write legibly in order to allow the user to write cohesively without concern over the ability to read it in the future. In doing so, a Written Text Reader will be able to assist many others to be able to read other people’s handwriting or even their own handwriting. To help satisfy these needs, the Written Text Reader will use a predicting function to help identify the illegible handwritten digit. 
+
+
+* WITTER should be able to turn handwriting to text in mere seconds and allow messy handwriting to be more legible.
+
+
+
+
+
+
+User Characteristics -J
+
+
+* Youth: primary target user due to people of young age typically having a hard time writing legibly for teachers and peers. Assumed to be below high school level. They would be able to use the tool on school provided technology or phones.
+
+
+* Those with injuries or disabilities: Secondary target users due to those that have gotten into accidents or developed/been born with disabilities that impact their ability to write legibly. Expected to be any age, with knowledge of how to write, just un-able to due to physical/mental impairment.
+
+
+* Elderly people: they are another target due to people who are older usually have shaky hands and can’t write neatly and legibly. Also old people might have arthritis causing joint pain while writing.
+
+
+* Lethargic people: they also would like this because some people don’t want to type something they just wrote so they can just use the WITTER to get their handwritten assignments/notes/etc on their computer.
+
+
+
+
+General Constraints -S
+
+
+* Need to to able to download onto technology
+
+
+* Only be available on computer
+
+
+* Can only be number digits
+
+
+* The handwriting somewhat resembles number digits
+        
+
+
+
+
+Assumptions/Dependencies -N
+
+
+* Knowledge of what digits are supposed to look like or what they are
+
+
+* People are able to write numbers
+
+
+* Have a writing utensil 
+
+
+* Access to technology
