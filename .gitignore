@@ -1,0 +1,27 @@
+# Eclipse
+.classpath
+.project
+.settings/
+
+# Intellij
+.idea/
+*.iml
+*.iws
+
+# Mac
+.DS_Store
+
+# Maven
+.factorypath
+log/
+
+# VS Code
+.vscode/
+
+# Program Files
+*.o
+*.elf
+*.c#
+
+# System Files
+~*
