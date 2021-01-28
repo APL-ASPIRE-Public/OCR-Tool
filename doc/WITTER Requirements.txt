@@ -4,10 +4,10 @@
 Core Ideas -J
 
 
-* The model will predict handwritten digits accurately
-* The model will be resource efficient
-* The model will be user friendly
-* The model will be simple but sophisticated 
+* The model will predict handwritten digits accurately (>99% accuracy in predictions)
+* The model will be resource efficient (not cause the computer to slow down as a result of running the program)
+* The model will be user friendly (made to be easily usable for anyone, regardless of tech knowledge)
+* The model will be simple but sophisticated (good enough to perform given task but do it in seconds)
 
 
 Purpose/Intended Audience -S
@@ -44,7 +44,7 @@ User Characteristics -J
 * Those with injuries or disabilities: Secondary target users due to those that have gotten into accidents or developed/been born with disabilities that impact their ability to write legibly. Expected to be any age, with knowledge of how to write, just un-able to due to physical/mental impairment.
 
 
-* Elderly people: they are another target due to people who are older usually have shaky hands and can’t write neatly and legibly. Also old people might have arthritis causing joint pain while writing.
+* Elderly people: they are another target due to people who are older usually have shaky hands and can’t write neatly and legibly. Also old people might have arthritis causing joint pain while writing. Expected to not be good with technology.
 
 
 * Lethargic people: they also would like this because some people don’t want to type something they just wrote so they can just use the WITTER to get their handwritten assignments/notes/etc on their computer.
@@ -58,7 +58,7 @@ General Constraints -S
 * Need to to able to download onto technology
 
 
-* Only be available on computer
+* Only be available on computers with a MacOS or Windows operating system.
 
 
 * Can only be number digits
@@ -73,7 +73,7 @@ General Constraints -S
 Assumptions/Dependencies -N
 
 
-* Knowledge of what digits are supposed to look like or what they are
+* Knowledge of what digits (0-9) are supposed to look like or what they are
 
 
 * People are able to write numbers
