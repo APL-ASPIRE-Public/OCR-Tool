@@ -1,0 +1,50 @@
+﻿WITTER (WTR) Timeline Rough Draft
+(given everything goes accordingly)
+
+
+Week of 2/1/2021
+* Review Requirements to make sure they are accurate to what we want to make
+* Begin the process of figuring out how we want to have our app built
+* Consider GUI design, Architecture of the NN, what platforms we will use (and how), resources we will use and how often we will communicate.
+* Reconvene with Matt to check on how we are doing
+
+
+Week of 2/8/2021
+* Begin the set up for the NN, Model, and Travis CI
+* Create the basic NN and create a cell divided version on Co-Lab for testing.
+* Begin figuring out GUI designing and how to use it in our project
+* Small testing to determine what kind of Regularization and Activation will be best.
+* Reconvene
+
+
+Week of 2/15/2021
+* Test and experiment with the NN in branches of Co-lab to maximize accuracy (>99%)
+* Check if debugging is needed
+* Continue to make a GUI that would work efficiently while being simple enough that (almost) anyone could use it.
+* Possible testing on live data
+* Reconvene
+----------------------------------------------------------------------------------------------------------------------------
+Week of 2/22/2021
+* Continue testing in Co-lab and find the best NN.
+* Check for debugging needs
+* Finish the GUI in order to make it so you can select an image file to identify (made for whole pages, 0-9, A-Z possibility)
+* Reconvene
+
+
+Week of 3/1/2021
+* Finalize the ML Model and connect it to a function in the GUI to read the selected file
+* Test on live data/experiment with the program as a whole
+* Make sure there aren't glitches or bugs, if so, fix and debug
+* Reconvene
+
+
+Week of 3/8/2021
+* Debug
+* Fix glitches
+* Fine-tune everything
+* Make a “well-oiled machine”
+
+
+Week of 3/15/2021
+* Publish
+* Celebrate that we made it
