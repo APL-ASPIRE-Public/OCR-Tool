@@ -41,13 +41,13 @@ def create_model(my_learning_rate):
   model.add(tf.keras.layers.Flatten(input_shape=(28, 28)))
 
 #first layer
-  model.add(tf.keras.layers.Dense(units= 65, activation= 'relu'))
+  model.add(tf.keras.layers.Dense(units= 65, activation = 'relu'))
    
 #second layer
-  model.add(tf.keras.layers.Dense(units= 35 , activation = 'relu'))
+  model.add(tf.keras.layers.Dense(units= 35))
 
 #third layer
-  model.add(tf.keras.layers.Dense(units= 27 , activation = 'relu'))
+  model.add(tf.keras.layers.Dense(units= 27))
 
 
   model.add(tf.keras.layers.Dropout(rate=0.2))
