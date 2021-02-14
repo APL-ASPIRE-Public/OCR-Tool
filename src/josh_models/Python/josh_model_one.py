@@ -6,6 +6,8 @@ import pandas as pd
 import tensorflow as tf
 from tensorflow.keras import layers
 from matplotlib import pyplot as plt
+from keras.preprocessing.image import load_img
+from keras.preprocessing.image import img_to_array
 
 pd.options.display.max_rows = 10
 pd.options.display.float_format = "{:.1f}".format
@@ -41,7 +43,7 @@ def create_model(my_learning_rate):
   model.add(tf.keras.layers.Flatten(input_shape=(28, 28)))
 
 #first layer
-  model.add(tf.keras.layers.Dense(units= 65, activation = 'relu'))
+  model.add(tf.keras.layers.Dense(units= 65, activation = 'swish'))
    
 #second layer
   model.add(tf.keras.layers.Dense(units= 35))
@@ -50,7 +52,7 @@ def create_model(my_learning_rate):
   model.add(tf.keras.layers.Dense(units= 27))
 
 
-  model.add(tf.keras.layers.Dropout(rate=0.2))
+  model.add(tf.keras.layers.Dropout(rate=0.05))
 
 
   model.add(tf.keras.layers.Dense(units=10, activation='softmax'))     
@@ -75,10 +77,10 @@ def train_model(model, train_features, train_label, epochs,
   return epochs, hist  
 
   # The following variables are the hyperparameters.
-learning_rate = 0.005
-epochs = 50
+learning_rate = 0.003
+epochs = 100
 batch_size = 4000
-validation_split = 0.25
+validation_split = 0.3
 
 my_model = create_model(learning_rate)
 
@@ -91,3 +93,28 @@ plot_curve(epochs, hist, list_of_metrics_to_plot)
 # Evaluate against the test set.
 print("\n Evaluate the new model against the test set:")
 my_model.evaluate(x=x_test_normalized, y=y_test, batch_size=batch_size)
+
+# load and prepare the image
+# placeholder image loader while i await sarabs code
+def load_image(filename):
+	# load the image
+	img = load_img(filename, color_mode="grayscale", target_size=(28, 28))
+	# convert to array
+	img = img_to_array(img)
+	# reshape into a single sample with 1 channel
+	img = img.reshape(1, 28, 28, 1)
+	# prepare pixel data
+	img = img.astype('float32')
+	img = img / 255.0
+	return img
+
+  #image prediction function
+def predict_digit(image):
+  # loads the image through the above function
+  img = load_image(image)
+  #predicts digit from the image as an interger
+  prediction = np.argmax(my_model.predict(img), axis=-1).astype("int32")
+  # print
+  print("Predicted number: ",prediction)
+
+predict_digit('/Users/wyattja1/Desktop/digit_one.jpg')
