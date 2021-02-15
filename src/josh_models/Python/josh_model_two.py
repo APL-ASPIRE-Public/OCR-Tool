@@ -6,6 +6,8 @@ import pandas as pd
 import tensorflow as tf
 from tensorflow.keras import layers
 from matplotlib import pyplot as plt
+from keras.preprocessing.image import load_img
+from keras.preprocessing.image import img_to_array
 
 pd.options.display.max_rows = 10
 pd.options.display.float_format = "{:.1f}".format
@@ -89,3 +91,28 @@ plot_curve(epochs, hist, list_of_metrics_to_plot)
 # Evaluate against the test set.
 print("\n Evaluate the new model against the test set:")
 my_model.evaluate(x=x_test_normalized, y=y_test, batch_size=batch_size)
+
+# load and prepare the image
+# placeholder image loader while i await sarabs code
+def load_image(filename):
+	# load the image
+	img = load_img(filename, color_mode="grayscale", target_size=(28, 28))
+	# convert to array
+	img = img_to_array(img)
+	# reshape into a single sample with 1 channel
+	img = img.reshape(1, 28, 28, 1)
+	# prepare pixel data
+	img = img.astype('float32')
+	img = img / 255.0
+	return img
+
+  #image prediction function
+def predict_digit(image):
+  # loads the image through the above function
+  img = load_image(image)
+  #predicts digit from the image as an interger
+  prediction = np.argmax(my_model.predict(img), axis=-1).astype("int32")
+  # print
+  print("Predicted number: ",prediction)
+
+predict_digit('/Users/wyattja1/Desktop/digit_one.jpg')
