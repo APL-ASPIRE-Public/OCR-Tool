@@ -94,7 +94,7 @@ def train_model(model, train_features, train_label, epochs,
   epochs = history.epoch
   hist = pd.DataFrame(history.history)
 
-  return epochs, hist
+  return epochs, hist 
 
 learning_rate = 0.005
 epochs = 55
