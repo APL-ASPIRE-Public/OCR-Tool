@@ -117,8 +117,8 @@ def predict_digit(image):
   # print
   print("Predicted number: ",prediction)
 
-predict_digit('/Users/wyattja1/Desktop/digit_one.jpg')
-predict_digit('/Users/wyattja1/Desktop/Digit_Two.jpg')
-predict_digit('/Users/wyattja1/Desktop/Digit_Three.jpg')
-predict_digit('/Users/wyattja1/Desktop/Digit_Four.jpg')
-predict_digit('/Users/wyattja1/Desktop/Digit_Five.jpg')
+predict_digit('/Users/wyattja1/Desktop/OCR-Tool/src/josh_models/Handwritten_Digits/digit_one.jpg')
+predict_digit('/Users/wyattja1/Desktop/OCR-Tool/src/josh_models/Handwritten_Digits/Digit_Two.jpg')
+predict_digit('/Users/wyattja1/Desktop/OCR-Tool/src/josh_models/Handwritten_Digits/Digit_Three.jpg')
+predict_digit('/Users/wyattja1/Desktop/OCR-Tool/src/josh_models/Handwritten_Digits/Digit_Four.jpg')
+predict_digit('/Users/wyattja1/Desktop/OCR-Tool/src/josh_models/Handwritten_Digits/Digit_Five.jpg')
