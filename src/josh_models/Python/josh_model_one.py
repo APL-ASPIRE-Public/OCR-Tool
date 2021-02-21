@@ -8,6 +8,9 @@ from tensorflow.keras import layers
 from matplotlib import pyplot as plt
 from keras.preprocessing.image import load_img
 from keras.preprocessing.image import img_to_array
+from PIL import image
+import cv2
+
 
 pd.options.display.max_rows = 10
 pd.options.display.float_format = "{:.1f}".format
@@ -96,16 +99,20 @@ my_model.evaluate(x=x_test_normalized, y=y_test, batch_size=batch_size)
 
 # load and prepare the image
 # placeholder image loader while i await sarabs code
+img_dir = 'C:'
+for img in os.listdir
+
 def load_image(filename):
 	# load the image
 	img = load_img(filename, color_mode="grayscale", target_size=(28, 28))
 	# convert to array
 	img = img_to_array(img)
 	# reshape into a single sample with 1 channel
-	img = img.reshape(1, 28, 28, 1)
+	img = tf.image.resize(img, (28,28)).numpy()
 	# prepare pixel data
 	img = img.astype('float32')
 	img = img / 255.0
+ 
 	return img
 
   #image prediction function
