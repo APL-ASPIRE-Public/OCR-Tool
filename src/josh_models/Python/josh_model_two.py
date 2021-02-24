@@ -4,6 +4,9 @@ from __future__ import absolute_import, division, print_function, unicode_litera
 import numpy as np
 import pandas as pd
 import tensorflow as tf
+from PIL import Image
+import cv2
+import os
 from tensorflow.keras import layers
 from matplotlib import pyplot as plt
 from keras.preprocessing.image import load_img
@@ -94,6 +97,16 @@ my_model.evaluate(x=x_test_normalized, y=y_test, batch_size=batch_size)
 
 # load and prepare the image
 # placeholder image loader while i await sarabs code
+def resize_image(filename):
+      for img in os.listdir(filename):
+        img_array = cv2.imread(os.path.join(filename,img), cv2.IMREAD_GRAYSCALE)
+    
+        img_pil = Image.fromarray(img_array)
+        img_28x28 = np.array(img_pil.resize(28,28))
+        img_array = (img_28x28.flatten())
+    
+        print (img_array)
+
 def load_image(filename):
 	# load the image
 	img = load_img(filename, color_mode="grayscale", target_size=(28, 28))
