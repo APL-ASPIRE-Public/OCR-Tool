@@ -83,17 +83,17 @@ epochs = 100
 batch_size = 4000
 validation_split = 0.3
 
-my_model = create_model(learning_rate)
+#my_model = create_model(learning_rate)
 
-epochs, hist = train_model(my_model, x_train_normalized, y_train, 
+#epochs, hist = train_model(my_model, x_train_normalized, y_train, 
                            epochs, batch_size, validation_split)
 
-list_of_metrics_to_plot = ['accuracy']
-plot_curve(epochs, hist, list_of_metrics_to_plot)
+#list_of_metrics_to_plot = ['accuracy']
+#plot_curve(epochs, hist, list_of_metrics_to_plot)
 
 # Evaluate against the test set.
 print("\n Evaluate the new model against the test set:")
-my_model.evaluate(x=x_test_normalized, y=y_test, batch_size=batch_size)
+#my_model.evaluate(x=x_test_normalized, y=y_test, batch_size=batch_size)
 
 # load and prepare the image
 # placeholder image loader while i await sarabs code
@@ -118,7 +118,8 @@ def predict_digit(image):
   # print
   print("Predicted number: ",prediction)
 
-im = Image.open('/Users/wyattja1/Desktop/OCR-Tool/src/josh_models/Handwritten_Digits/digit_one.jpg')
-im_invert = ImageOps.invert(im)
-im_invert.save('/Users/wyattja1/Desktop/OCR-Tool/src/josh_models/Handwritten_Digits/digit_one_invert.jpg', quality=95)
-predict_digit('/Users/wyattja1/Desktop/OCR-Tool/src/josh_models/Handwritten_Digits/digit_one_invert.jpg')
+def invert(image):     
+  im = Image.open(image)
+  im_invert = ImageOps.invert(im)
+  im_invert.save('/Users/wyattja1/Downloads/digit_one_invert.jpg', quality=95)
+invert('/Users/wyattja1/Desktop/OCR-Tool/src/josh_models/Handwritten_Digits/digit_one.jpg')
