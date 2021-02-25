@@ -8,7 +8,6 @@ from tensorflow.keras import layers
 from matplotlib import pyplot as plt
 from keras.preprocessing.image import load_img
 from keras.preprocessing.image import img_to_array
-from PIL import Image, ImageOps
 
 pd.options.display.max_rows = 10
 pd.options.display.float_format = "{:.1f}".format
@@ -118,9 +117,4 @@ def predict_digit(image):
   # print
   print("Predicted number: ",prediction)
 
-def invert(image):     
-  im = Image.open(image)
-  im_invert = ImageOps.invert(im)
-  im_invert.save('/Users/wyattja1/Downloads/digit_one_invert.jpg', quality=95)
-invert('/Users/wyattja1/Desktop/OCR-Tool/src/josh_models/Handwritten_Digits/digit_one.jpg')
-predict_digit('/Users/wyattja1/Downloads/digit_one_invert.jpg')
+predict_digit('/Users/wyattja1/Desktop/OCR-Tool/src/josh_models/Handwritten_Digits/digit_one.jpg')
