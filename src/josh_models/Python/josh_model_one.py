@@ -1,6 +1,6 @@
 
 from __future__ import absolute_import, division, print_function, unicode_literals
-
+from random import randint
 import numpy as np
 import pandas as pd
 import tensorflow as tf
@@ -8,6 +8,8 @@ from tensorflow.keras import layers
 from matplotlib import pyplot as plt
 from keras.preprocessing.image import load_img
 from keras.preprocessing.image import img_to_array
+
+from PIL import Image, ImageOps
 
 pd.options.display.max_rows = 10
 pd.options.display.float_format = "{:.1f}".format
@@ -78,7 +80,7 @@ def train_model(model, train_features, train_label, epochs,
 
   # The following variables are the hyperparameters.
 learning_rate = 0.003
-epochs = 100
+epochs = 60
 batch_size = 4000
 validation_split = 0.3
 
@@ -118,3 +120,6 @@ def predict_digit(image):
   print("Predicted number: ",prediction)
 
 predict_digit('/Users/wyattja1/Desktop/OCR-Tool/src/josh_models/Handwritten_Digits/digit_one.jpg')
+
+
+
