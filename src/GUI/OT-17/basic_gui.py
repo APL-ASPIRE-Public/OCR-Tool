@@ -14,6 +14,7 @@ class App(QWidget):
         #set bar title
         self.title = 'OCR-Tool - "WITTER"'
 
+        ##Creates a color for the window
         #self.palette = self.palette()
         #self.palette.setColor(QPalette.Window, QColor(185, 80, 225))
         #self.setPalette(self.palette)
@@ -34,13 +35,21 @@ class App(QWidget):
         button.move(100,100)
         button.clicked.connect(self.on_click)
 
-        button.setIcon(QIcon('/Users/wyattja1/Downloads/website.jpg'))
-        button.setIconSize(QSize(50, 50))
+        ##Creates a small icon to the left of the button, could be used for a JHU logo?
+        #button.setIcon(QIcon('/Users/wyattja1/Desktop/OCR-Tool/src/josh_models/Handwritten_Digits/digit_one.jpg'))
+        #button.setIconSize(QSize(12, 12))
 
+        #Removes border of button and makes it just text
         button.setFlat(True)
+
+        #Drop shadow effect
         effect = QGraphicsDropShadowEffect()
         effect.setOffset(1,1)
+        
+        #Slightly blurs the drop shadow
         effect.setBlurRadius(2)
+
+        #Applies effect to button
         button.setGraphicsEffect(effect)
         self.show()
 
