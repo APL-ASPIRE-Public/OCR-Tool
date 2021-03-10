@@ -15,9 +15,9 @@ class App(QWidget):
         self.title = 'OCR-Tool - "WITTER"'
 
         ##Creates a color for the window
-        #self.palette = self.palette()
-        #self.palette.setColor(QPalette.Window, QColor(185, 80, 225))
-        #self.setPalette(self.palette)
+        self.palette = self.palette()
+        self.palette.setColor(QPalette.Window, QColor(230, 220, 255))
+        self.setPalette(self.palette)
 
         #set dimensions
         self.left = 10
@@ -55,11 +55,20 @@ class App(QWidget):
 
     @pyqtSlot()
 
+    def openFileNameDialog(self):
+        options = QFileDialog.Options()
+        options |= QFileDialog.DontUseNativeDialog
+        fileName, _ = QFileDialog.getOpenFileName(self,"Choose a File", "","JPEG Files (*.jpg);;PNG Files (*.png);;PDF Files (*,pdf)", options=options)
+        if fileName:
+            print(fileName)
+            im = Image.open(fileName)
+            im.show()
+        else:
+            print("Invalid file")
+
     #when clicking the button, it opens a file selector prompt through tkinter
     def on_click(self):
-        root = Tk()
-        root.filename = filedialog.askopenfilename(initialdir = "/",title = "Select file",filetypes = (("jpeg files","*.jpg"),("png files","*.png"),("pdf files","*.pdf")))
-        Image.open(root.filename)
+        self.openFileNameDialog()
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
