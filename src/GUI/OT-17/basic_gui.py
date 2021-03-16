@@ -34,13 +34,18 @@ class App(QWidget):
         button = QPushButton('Select a .JPG, .PNG, or .PDF file', self)
         button.move(100,100)
         button.clicked.connect(self.on_click)
+        label = QLabel(self)
+        label.setText('Welcome to the OCR Tool "WITTER".')
+        label.setFont(QFont('Comic Sans MS',20))
+        label.move(60,30)
+        label.setAlignment(Qt.AlignLeft)
 
         ##Creates a small icon to the left of the button, could be used for a JHU logo?
         #button.setIcon(QIcon('/Users/wyattja1/Desktop/OCR-Tool/src/josh_models/Handwritten_Digits/digit_one.jpg'))
         #button.setIconSize(QSize(12, 12))
 
         #Removes border of button and makes it just text
-        button.setFlat(True)
+        #button.setFlat(True)
 
         #Drop shadow effect
         effect = QGraphicsDropShadowEffect()
