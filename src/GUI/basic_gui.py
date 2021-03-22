@@ -1,11 +1,10 @@
-from tkinter import filedialog
-from tkinter import *
 import sys
 from PyQt5.QtWidgets import * 
 from PyQt5 import QtCore, QtGui 
 from PyQt5.QtGui import * 
 from PyQt5.QtCore import *
 from PIL import Image, ImageOps
+from pdf2image import convert_from_path
 
 class App(QWidget):
     #initilized variables
@@ -63,15 +62,19 @@ class App(QWidget):
     def openFileNameDialog(self):
         options = QFileDialog.Options()
         options |= QFileDialog.DontUseNativeDialog
-        fileName, _ = QFileDialog.getOpenFileName(self,"Choose a File", "","JPEG Files (*.jpg);;PNG Files (*.png);;PDF Files (*,pdf)", options=options)
+        fileName, _ = QFileDialog.getOpenFileName(self,"Choose a File", "","JPEG Files (*.jpg);;PNG Files (*.png);;PDF Files (*.pdf)", options=options)
         if fileName:
-            print(fileName)
-            im = Image.open(fileName)
+            if fileName.endswith('.pdf'):
+                pages = convert_from_path(fileName)
+                for page in pages:
+                    temp_file_path, _ = QFileDialog.getSaveFileName(self,'Save File as a JPG',r"H:/out","JPEG Files (*.jpg)")
+                    page.save(temp_file_path)           
+            im = Image.open(temp_file_path)
             im.show()
         else:
             print("Invalid file")
 
-    #when clicking the button, it opens a file selector prompt through tkinter
+    #when clicking the button, it opens a file selector prompt through pyqt
     def on_click(self):
         self.openFileNameDialog()
 
