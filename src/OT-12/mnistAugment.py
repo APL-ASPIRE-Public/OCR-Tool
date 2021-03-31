@@ -28,9 +28,9 @@ x_train[2019]
 Img = Image.fromarray(x_train[2019])
 Img.save('/Users/anumanl1/Downloads/image.jpg', quality =95)
 
-data_augment = tf.keras.Sequential(layers.experimental.preprocessing.RandomRotation(0.1))
+data_augment = tf.keras.Sequential(layers.experimental.preprocessing.RandomZoom(0.1))
 x = data_augment(x_train[2019])
-Img2 = Image.fromarray(data_augment(x_train[2019]))
+Img2 = Image.fromarray(x_train[2019])
 Img2.save('/Users/anumanl1/Downloads/aug_image.jpg', quality =95)
 
 # Use false colors to visualize the array.
