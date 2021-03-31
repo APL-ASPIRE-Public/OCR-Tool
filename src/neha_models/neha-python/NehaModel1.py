@@ -16,8 +16,12 @@ from __future__ import absolute_import, division, print_function, unicode_litera
 import numpy as np
 import pandas as pd
 import tensorflow as tf
+from tensorflow import keras
 from tensorflow.keras import layers
 from matplotlib import pyplot as plt
+import PIL
+from PIL import Image, ImageEnhance
+
 
 # The following lines adjust the granularity of reporting. 
 pd.options.display.max_rows = 10
@@ -29,6 +33,14 @@ np.set_printoptions(linewidth = 200)
 (x_train, y_train),(x_test, y_test) = tf.keras.datasets.mnist.load_data()
 
 x_train[2019]
+
+Img = Image.fromarray(x_train[2019])
+Img.save('/Users/anumanl1/Downloads/image.jpg', quality =95)
+
+data_augment = tf.keras.Sequential(layers.experimental.preprocessing.RandomZoom(0.001))
+x = data_augment(x_train[2019])
+Img2 = Image.fromarray(x)
+Img2.save('/Users/anumanl1/Downloads/aug_image.jpg', quality =95)
 
 # Use false colors to visualize the array.
 plt.imshow(x_train[2019])
@@ -106,6 +118,7 @@ my_model = create_model(learning_rate)
 # Training the model on the normalized training set.
 epochs, hist = train_model(my_model, x_train_normalized, y_train, 
                            epochs, batch_size, validation_split)
+
 
 # graph of the metric vs. epochs.
 list_of_metrics_to_plot = ['accuracy']
