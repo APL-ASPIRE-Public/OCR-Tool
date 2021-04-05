@@ -28,7 +28,7 @@ def openNewWindow():
     newWindow.title("OCT-TOOL WITTER")
   
     # sets the size of window
-    newWindow.geometry("400x400")
+    newWindow.geometry("800x800")
     
     
     # labels
