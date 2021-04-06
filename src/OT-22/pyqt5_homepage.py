@@ -28,16 +28,25 @@ class Window2(QMainWindow):
         self.setPalette(self.palette)
 
         select_button = QPushButton('Select a .JPG, .PNG, or .PDF file', self)
-        select_button.move(275, 200)
         select_button.setGeometry(200,200,300,25)
+        select_button.move(200, 200)
         select_button.clicked.connect(self.on_click)
+
+        #Drop shadow effect
+        effect = QGraphicsDropShadowEffect()
+        effect.setOffset(1,1)
+        
+        #Slightly blurs the drop shadow
+        effect.setBlurRadius(2)
+
+        #Applies effect to button
+        select_button.setGraphicsEffect(effect)
 
         selection_page_label = QLabel(self)
         selection_page_label.setText('Please select a usable file.')
         selection_page_label.setFont(QFont('Comic Sans MS',20))
-        selection_page_label.move(225,170)
         selection_page_label.setGeometry(225,170,300,50)
-        selection_page_label.setAlignment(Qt.AlignLeft)
+        selection_page_label.move(225,165)
 
     def openFileNameDialog(self):
         options = QFileDialog.Options()
@@ -55,7 +64,7 @@ class Window2(QMainWindow):
             print("Invalid file")
 
     #when clicking the select_button
-, it opens a file selector prompt through pyqt
+    #it opens a file selector prompt through pyqt
     def on_click(self):
         self.openFileNameDialog()
         
