@@ -32,15 +32,24 @@ class Window2(QMainWindow):
         select_button.move(200, 200)
         select_button.clicked.connect(self.on_click)
 
+        predict_button = QPushButton('Predict the Numbers of a .JPG,.PNG, or .PDF file', self)
+        predict_button.setGeometry(200,200,350,25)
+        predict_button.move(175, 230)
+
         #Drop shadow effect
-        effect = QGraphicsDropShadowEffect()
-        effect.setOffset(1,1)
+        select_effect = QGraphicsDropShadowEffect()
+        select_effect.setOffset(1,1)
+
+        predict_effect = QGraphicsDropShadowEffect()
+        predict_effect.setOffset(1,1)
         
         #Slightly blurs the drop shadow
-        effect.setBlurRadius(2)
+        select_effect.setBlurRadius(2)
+        predict_effect.setBlurRadius(2)
 
         #Applies effect to button
-        select_button.setGraphicsEffect(effect)
+        select_button.setGraphicsEffect(select_effect)
+        predict_button.setGraphicsEffect(predict_effect)
 
         selection_page_label = QLabel(self)
         selection_page_label.setText('Please select a usable file.')
