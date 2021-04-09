@@ -30,7 +30,9 @@ def load_image(filename):
 	img = img / 255.0
 	return img
 
+#working on making a way to select the model so this isnt a direct file open, may take a bit
 model = keras.models.load_model('/Users/wyattja1/Desktop/OCR-Tool/src/saved_cnn_models/new_model.h5')
+
 #image prediction function
 def predict_digit(image):
     # loads the image through the above function
