@@ -11,6 +11,34 @@ from PyQt5.QtGui import *
 from PyQt5.QtCore import *
 from PIL import Image, ImageOps
 from pdf2image import convert_from_path
+from tensorflow import keras
+from keras.preprocessing.image import load_img
+from keras.preprocessing.image import img_to_array
+import numpy as np
+import os
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
+
+def load_image(filename):
+    	# load the image
+	img = load_img(filename, color_mode="grayscale", target_size=(28, 28))
+	# convert to array
+	img = img_to_array(img)
+	# reshape into a single sample with 1 channel
+	img = img.reshape(1, 28, 28, 1)
+	# prepare pixel data
+	img = img.astype('float32')
+	img = img / 255.0
+	return img
+
+model = keras.models.load_model('/Users/wyattja1/Desktop/OCR-Tool/src/saved_cnn_models/new_model.h5')
+#image prediction function
+def predict_digit(image):
+    # loads the image through the above function
+    img = load_image(image)
+    #predicts digit from the image as an interger
+    prediction = np.argmax(model.predict(img), axis=-1).astype("int32")
+    # print
+    print("Predicted number: ",prediction)
 
 class Window2(QMainWindow):                           
     def __init__(self):
@@ -30,11 +58,12 @@ class Window2(QMainWindow):
         select_button = QPushButton('Select a .JPG, .PNG, or .PDF file', self)
         select_button.setGeometry(200,200,300,25)
         select_button.move(200, 200)
-        select_button.clicked.connect(self.on_click)
+        select_button.clicked.connect(self.open_filename_dialog)
 
-        predict_button = QPushButton('Predict the Numbers of a .JPG,.PNG, or .PDF file', self)
+        predict_button = QPushButton('Predict the Numbers of a .JPG,or .PNG file', self)
         predict_button.setGeometry(200,200,350,25)
         predict_button.move(175, 230)
+        predict_button.clicked.connect(self.predict_dialog)
 
         #Drop shadow effect
         select_effect = QGraphicsDropShadowEffect()
@@ -57,7 +86,7 @@ class Window2(QMainWindow):
         selection_page_label.setGeometry(225,170,300,50)
         selection_page_label.move(225,165)
 
-    def openFileNameDialog(self):
+    def open_filename_dialog(self):
         options = QFileDialog.Options()
         options |= QFileDialog.DontUseNativeDialog
         fileName, _ = QFileDialog.getOpenFileName(self,"Choose a File", "","JPEG Files (*.jpg);;PNG Files (*.png);;PDF Files (*.pdf)", options=options)
@@ -72,11 +101,12 @@ class Window2(QMainWindow):
         else:
             print("Invalid file")
 
-    #when clicking the select_button
-    #it opens a file selector prompt through pyqt
-    def on_click(self):
-        self.openFileNameDialog()
-        
+    def predict_dialog(self):
+        options = QFileDialog.Options()
+        options |= QFileDialog.DontUseNativeDialog
+        fileName, _ = QFileDialog.getOpenFileName(self,"Choose a File", "","JPEG Files (*.jpg);;PNG Files (*.png)", options=options)
+        predict_digit(fileName)
+
 
 class Window(QMainWindow):
     def __init__(self):
