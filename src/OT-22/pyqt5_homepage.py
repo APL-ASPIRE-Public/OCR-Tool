@@ -31,7 +31,7 @@ def load_image(filename):
 	return img
 
 #working on making a way to select the model so this isnt a direct file open, may take a bit
-model = keras.models.load_model('/Users/wyattja1/Desktop/OCR-Tool/src/saved_cnn_models/new_model.h5')
+model = keras.models.load_model('/Users/jwdevelops/Desktop/OCR-Tool/src/saved_cnn_models/new_model.h5')
 
 #image prediction function
 def predict_digit(image):
@@ -53,18 +53,22 @@ class Window2(QMainWindow):
         self.height = 500
         self.setGeometry(self.left, self.top, self.width, self.height)
         
+        #set the background color of the page
         self.palette = self.palette()
         self.palette.setColor(QPalette.Window, QColor(230, 220, 255))
         self.setPalette(self.palette)
 
+        #create buttons for turning a pdf into an image and predicting numbers
         select_button = QPushButton('Select a .JPG, .PNG, or .PDF file', self)
         select_button.setGeometry(200,200,300,25)
         select_button.move(200, 200)
+        select_button.setStyleSheet("color: black; background: white")
         select_button.clicked.connect(self.open_filename_dialog)
 
         predict_button = QPushButton('Predict the Numbers of a .JPG,or .PNG file', self)
         predict_button.setGeometry(200,200,350,25)
         predict_button.move(175, 230)
+        predict_button.setStyleSheet("color: black; background: white")
         predict_button.clicked.connect(self.predict_dialog)
 
         #Drop shadow effect
@@ -82,12 +86,15 @@ class Window2(QMainWindow):
         select_button.setGraphicsEffect(select_effect)
         predict_button.setGraphicsEffect(predict_effect)
 
+        #label for second page
         selection_page_label = QLabel(self)
         selection_page_label.setText('Please select a usable file.')
         selection_page_label.setFont(QFont('Comic Sans MS',20))
+        selection_page_label.setStyleSheet("color: black")
         selection_page_label.setGeometry(225,170,300,50)
-        selection_page_label.move(225,165)
+        selection_page_label.move(225,150)
 
+    #function to select image, turns pdf's to images
     def open_filename_dialog(self):
         options = QFileDialog.Options()
         options |= QFileDialog.DontUseNativeDialog
@@ -101,13 +108,17 @@ class Window2(QMainWindow):
             im = Image.open(temp_file_path)
             im.show()
         else:
-            print("Invalid file")
+            print("Invalid file or no file selected.")
 
+    #function to predict based on images
     def predict_dialog(self):
         options = QFileDialog.Options()
         options |= QFileDialog.DontUseNativeDialog
         fileName, _ = QFileDialog.getOpenFileName(self,"Choose a File", "","JPEG Files (*.jpg);;PNG Files (*.png)", options=options)
-        predict_digit(fileName)
+        if fileName:
+            predict_digit(fileName)
+        else:
+            print("Invalid file or no file selected.")
 
 
 class Window(QMainWindow):
@@ -122,6 +133,18 @@ class Window(QMainWindow):
 
         self.pushButton = QPushButton("Start", self)
         self.pushButton.move(275, 200)
+        self.pushButton.setStyleSheet("color: black; background: white")
+
+        #Drop shadow effect
+        push_effect = QGraphicsDropShadowEffect()
+        push_effect.setOffset(1,1)
+        
+        #Slightly blurs the drop shadow
+        push_effect.setBlurRadius(2)
+
+        #Applies effect to button
+        self.pushButton.setGraphicsEffect(push_effect)
+
         
         self.palette = self.palette()
         self.palette.setColor(QPalette.Window, QColor(230, 220, 255))
@@ -133,7 +156,9 @@ class Window(QMainWindow):
 
     def main_window(self):
         self.selection_page_label = QLabel("Welcome!", self)
-        self.selection_page_label.move(290, 175)
+        self.selection_page_label.move(280, 165)
+        self.selection_page_label.setStyleSheet("color: black")
+        self.selection_page_label.setFont(QFont('Comic Sans MS',20))
         self.setWindowTitle(self.title)
         self.setGeometry(self.top, self.left, self.width, self.height)
         self.show()
@@ -148,5 +173,7 @@ class Window(QMainWindow):
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
+    #['Breeze', 'Oxygen', 'QtCurve', 'Windows', 'Fusion']
+    app.setStyle("Fusion")
     window = Window()
     sys.exit(app.exec())
