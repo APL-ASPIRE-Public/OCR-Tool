@@ -31,7 +31,8 @@ def load_image(filename):
 	return img
 
 #working on making a way to select the model so this isnt a direct file open, may take a bit
-model = keras.models.load_model('/Users/jwdevelops/Desktop/OCR-Tool/src/saved_cnn_models/new_model.h5')
+#Josh personal: jwdevelops, Josh internship: wyattja1, Neha internship: anumanl1
+model = keras.models.load_model('/Users/wyattja1/Desktop/OCR-Tool/src/saved_cnn_models/new_model.h5')
 
 #image prediction function
 def predict_digit(image):
