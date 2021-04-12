@@ -60,13 +60,13 @@ class Window2(QMainWindow):
         self.setPalette(self.palette)
 
         #create buttons for turning a pdf into an image and predicting numbers
-        select_button = QPushButton('Select a .JPG, .PNG, or .PDF file', self)
+        select_button = QPushButton('Convert a .PDF file to a .JPG file', self)
         select_button.setGeometry(200,200,300,25)
         select_button.move(200, 200)
         select_button.setStyleSheet("color: black; background: white")
         select_button.clicked.connect(self.open_filename_dialog)
 
-        predict_button = QPushButton('Predict the Numbers of a .JPG,or .PNG file', self)
+        predict_button = QPushButton('Predict the Numbers of a .JPG, or .PNG file', self)
         predict_button.setGeometry(200,200,350,25)
         predict_button.move(175, 230)
         predict_button.setStyleSheet("color: black; background: white")
@@ -99,15 +99,18 @@ class Window2(QMainWindow):
     def open_filename_dialog(self):
         options = QFileDialog.Options()
         options |= QFileDialog.DontUseNativeDialog
-        fileName, _ = QFileDialog.getOpenFileName(self,"Choose a File", "","JPEG Files (*.jpg);;PNG Files (*.png);;PDF Files (*.pdf)", options=options)
+        fileName, _ = QFileDialog.getOpenFileName(self,"Choose a File", "",";PDF Files (*.pdf)", options=options)
+        all_pages = []
         if fileName:
             if fileName.endswith('.pdf'):
                 pages = convert_from_path(fileName)
                 for page in pages:
                     temp_file_path, _ = QFileDialog.getSaveFileName(self,'Save File as a JPG',r"H:/out","JPEG Files (*.jpg)")
-                    page.save(temp_file_path)           
-            im = Image.open(temp_file_path)
-            im.show()
+                    page.save(temp_file_path)  
+                    all_pages.append(temp_file_path)  
+            for x in all_pages:
+                im = Image.open(x)
+                im.show()
         else:
             print("Invalid file or no file selected.")
 
@@ -132,26 +135,26 @@ class Window(QMainWindow):
         self.width = 680
         self.height = 500
 
-        self.pushButton = QPushButton("Start", self)
-        self.pushButton.move(275, 200)
-        self.pushButton.setStyleSheet("color: black; background: white")
+        self.start_button = QPushButton("Start", self)
+        self.start_button.move(275, 200)
+        self.start_button.setStyleSheet("color: black; background: white")
 
         #Drop shadow effect
-        push_effect = QGraphicsDropShadowEffect()
-        push_effect.setOffset(1,1)
+        start_button_effect = QGraphicsDropShadowEffect()
+        start_button_effect.setOffset(1,1)
         
         #Slightly blurs the drop shadow
-        push_effect.setBlurRadius(2)
+        start_button_effect.setBlurRadius(2)
 
         #Applies effect to button
-        self.pushButton.setGraphicsEffect(push_effect)
+        self.start_button.setGraphicsEffect(start_button_effect)
 
         
         self.palette = self.palette()
         self.palette.setColor(QPalette.Window, QColor(230, 220, 255))
         self.setPalette(self.palette)
 
-        self.pushButton.clicked.connect(self.window2)              
+        self.start_button.clicked.connect(self.window2)              
 
         self.main_window()
 
@@ -169,9 +172,7 @@ class Window(QMainWindow):
         self.w.show()
         self.hide()
 
-        
-        
-
+#app boot-up
 if __name__ == "__main__":
     app = QApplication(sys.argv)
     #['Breeze', 'Oxygen', 'QtCurve', 'Windows', 'Fusion']
