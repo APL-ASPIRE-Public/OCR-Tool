@@ -4,7 +4,12 @@
 # Website : http://www.arunponnusamy.com
 ############################################
 
-# yes
+#IMPORTANT --------------------------------------------------------------------------------------
+##I (Josh) cannot seem to find any completed example projects of people using YoloV3 to do digit 
+##detection. I see many use SVHN (street view house number) datasets, but they seem to have a 
+##whole project built around just getting Yolo to work with a dataset other than COCO, all these
+##are from 2+ years ago but are the most recent examples of Yolo + digit detection.
+#IMPORTANT --------------------------------------------------------------------------------------
 import cv2
 import argparse
 import numpy as np
