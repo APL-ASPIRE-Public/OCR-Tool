@@ -55,7 +55,7 @@ class Window2(QMainWindow):
             print("Invalid file")
 
     #when clicking the select_button
-, it opens a file selector prompt through pyqt
+    #it opens a file selector prompt through pyqt
     def on_click(self):
         self.openFileNameDialog()
         
